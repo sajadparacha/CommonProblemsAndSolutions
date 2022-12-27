@@ -1,13 +1,8 @@
 package com.knowledge.sharing.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,8 +20,10 @@ public class ProblemSearchTags {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column(name = "applDescription")
-	private String applDescription;
-	@ManyToOne
-    private CommonProblemAndSolution commonProblemAndSolution;
+	@Column(name = "tag")
+	private String tag;
+	@JsonBackReference
+	@ManyToOne (cascade=CascadeType.ALL)
+
+    private CommonProblem commonProblem;
 }
