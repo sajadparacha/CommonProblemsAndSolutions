@@ -12,11 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Setter
 @Getter
@@ -24,6 +20,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Data
 @Table(name ="application")
 public class Application {
 	@Id
@@ -31,6 +28,8 @@ public class Application {
 	private long id;
 	@Column(name = "applDescription")
 	private String applDescription;
+	@Column(name = "applName")
+	private String applName;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "application")
     private Set<CommonProblemAndSolution> ingredients=new HashSet<>();
 }
