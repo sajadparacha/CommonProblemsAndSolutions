@@ -5,7 +5,7 @@ import com.knowledge.sharing.domain.CommonProblem;
 import com.knowledge.sharing.domain.Solution;
 import com.knowledge.sharing.repositories.ApplicationRepository;
 import com.knowledge.sharing.repositories.CommonProblemRepository;
-import com.knowledge.sharing.repositories.ProblemSearchTagRepository;
+import com.knowledge.sharing.repositories.ProblemSearchTagsRepository;
 import com.knowledge.sharing.repositories.SolutionRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
@@ -16,10 +16,10 @@ import org.springframework.stereotype.Component;
 public class Bootstrap implements CommandLineRunner {
     ApplicationRepository applicationRepository;
     CommonProblemRepository commonProblemRepository;
-    ProblemSearchTagRepository problemSearchTagRepository;
+    ProblemSearchTagsRepository problemSearchTagRepository;
     SolutionRepository solutionRepository;
 
-    public Bootstrap(ApplicationRepository applicationRepository, CommonProblemRepository commonProblemRepository, ProblemSearchTagRepository problemSearchTagRepository, SolutionRepository solutionRepository) {
+    public Bootstrap(ApplicationRepository applicationRepository, CommonProblemRepository commonProblemRepository, ProblemSearchTagsRepository problemSearchTagRepository, SolutionRepository solutionRepository) {
         this.applicationRepository = applicationRepository;
         this.commonProblemRepository = commonProblemRepository;
         this.problemSearchTagRepository = problemSearchTagRepository;
