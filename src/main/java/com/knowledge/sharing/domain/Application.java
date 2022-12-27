@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 @Setter
@@ -30,6 +31,7 @@ public class Application {
 	private String applDescription;
 	@Column(name = "applName")
 	private String applName;
+	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "application")
-    private Set<CommonProblemAndSolution> ingredients=new HashSet<>();
+    private Set<CommonProblem> commonProblems =new HashSet<>();
 }

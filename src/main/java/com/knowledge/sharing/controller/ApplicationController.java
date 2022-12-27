@@ -20,7 +20,35 @@ public class ApplicationController {
     @GetMapping("/allApplications")
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public List<Application> getAllSaleInformation(){
+    public List<Application> getAllApplications(){
         return applicationService.findAllApplications();
+    }
+
+    @GetMapping("/{id}")
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public Application findApplication(@PathVariable long id){
+        return applicationService.findApplication(id);
+    }
+
+    @PostMapping
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public void saveApplication(@RequestBody Application application){
+        applicationService.saveApplication(application);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteApplication(@PathVariable long id){
+        applicationService.deleteApplication(id);
+    }
+
+    @PutMapping
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    public void updateApplication(@RequestBody Application application){
+        applicationService.updateApplication(application);
     }
 }
