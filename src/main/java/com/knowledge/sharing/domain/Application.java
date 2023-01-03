@@ -26,7 +26,7 @@ import lombok.*;
 public class Application {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private long applicationId;
 	@Column(name = "applDescription")
 	private String applDescription;
 	@Column(name = "applName")

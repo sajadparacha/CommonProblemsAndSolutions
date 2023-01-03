@@ -24,7 +24,7 @@ import lombok.Setter;
 public class CommonProblem {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private long commonProblemId;
 
 	@Column(name = "problemDesc")
 	private String problemDesc;

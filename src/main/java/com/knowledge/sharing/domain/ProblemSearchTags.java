@@ -19,7 +19,7 @@ import lombok.Setter;
 public class ProblemSearchTags {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private long problemSearchTagId;
 	@Column(name = "tag")
 	private String tag;
 	@JsonBackReference

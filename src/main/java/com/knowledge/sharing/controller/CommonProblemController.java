@@ -1,5 +1,6 @@
 package com.knowledge.sharing.controller;
 
+import com.knowledge.sharing.domain.Application;
 import com.knowledge.sharing.domain.CommonProblem;
 import com.knowledge.sharing.services.CommonProblemService;
 import org.springframework.http.HttpStatus;
@@ -28,7 +29,9 @@ public class CommonProblemController {
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     public CommonProblem findCommonProblem(@PathVariable long id){
-        return commonProblemService.findCommonProblem(id);
+        CommonProblem commonProblem= commonProblemService.findCommonProblem(id);
+
+        return commonProblem;
     }
 
     @PostMapping

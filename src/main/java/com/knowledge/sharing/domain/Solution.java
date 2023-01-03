@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class Solution {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long solutionId;
     @Column(name = "solDescription")
     private String solDescription;
     @Column(name = "seqNumber")
