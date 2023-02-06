@@ -1,1 +1,2 @@
+#we have to create a container file later , but for now run below docker command to have mysql container running on your machine
 docker run --name common-support-mysql -e MYSQL_ROOT_PASSWORD=mypa11 -e MYSQL_DATABASE=common-issue-and-solution -e MYSQL_USER=sajad -e MYSQL_PASSWORD=paracha -v c:/Users/sajad/tmp:/var/lib/mysql -p 3306:3306 -d mysql
