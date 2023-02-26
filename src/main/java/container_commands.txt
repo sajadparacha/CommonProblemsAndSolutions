@@ -1,1 +1,6 @@
+#mysql
 docker run --name common-support-mysql -e MYSQL_ROOT_PASSWORD=mypa11 -e MYSQL_DATABASE=common-issue-and-solution -e MYSQL_USER=sajad -e MYSQL_PASSWORD=paracha -v c:/Users/sajad/tmp:/var/lib/mysql -p 3306:3306 -d mysql
+#Deploying SpringBoot app to container , assuming Dockerfile is available on path
+docker build -t common-support-container .
+#run DockerCnntainer having Springboot application (e84f039c9616 is the container name)
+docker run -p 8080:8080 e84f039c9616

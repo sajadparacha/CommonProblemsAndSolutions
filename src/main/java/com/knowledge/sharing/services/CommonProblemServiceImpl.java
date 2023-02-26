@@ -15,13 +15,13 @@ public class CommonProblemServiceImpl implements CommonProblemService{
     }
 
     @Override
-    public void saveCommonProblem(CommonProblem commonProblem) {
-        commonProblemRepository.save(commonProblem);
+    public CommonProblem saveCommonProblem(CommonProblem commonProblem) {
+        return commonProblemRepository.save(commonProblem);
     }
 
     @Override
-    public void updateCommonProblem(CommonProblem commonProblem) {
-        commonProblemRepository.save(commonProblem);
+    public CommonProblem updateCommonProblem(CommonProblem commonProblem) {
+        return commonProblemRepository.save(commonProblem);
     }
 
     @Override
