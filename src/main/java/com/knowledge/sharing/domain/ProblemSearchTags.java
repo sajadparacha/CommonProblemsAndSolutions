@@ -23,7 +23,7 @@ public class ProblemSearchTags {
 	@Column(name = "tag")
 	private String tag;
 	@JsonBackReference
-	@ManyToOne (cascade=CascadeType.ALL)
+	@ManyToOne (cascade=CascadeType.PERSIST)
 
     private CommonProblem commonProblem;
 }

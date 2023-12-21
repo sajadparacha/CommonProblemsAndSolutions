@@ -31,7 +31,13 @@ public class CommonProblem {
 
 
 	@JsonBackReference
-	@ManyToOne (cascade=CascadeType.ALL)
+	@ManyToOne (cascade=CascadeType.PERSIST)
+//	@ManyToOne (cascade=CascadeType.All)
+	/*
+	*Having cascade=CascadeType.All was deleting parent with child record
+	* so we have disabled it
+	* */
+
     private Application application;
 	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "commonProblem")

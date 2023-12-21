@@ -4,6 +4,7 @@ import com.knowledge.sharing.domain.Application;
 import com.knowledge.sharing.domain.Solution;
 
 import java.util.List;
+import java.util.Map;
 
 public interface SolutionService {
     public void saveSolution(Solution solution);
@@ -12,4 +13,5 @@ public interface SolutionService {
     public Solution findSolution(long solutionId);
     public List<Solution> findAllSolutions();
 
+    List<Map<String,Object>> findAllSolutionsForGivenProblem(long problemId);
 }

@@ -35,6 +35,7 @@ public class ApplicationServiceImpl implements ApplicationService{
 
     @Override
     public List<Application> findAllApplications() {
+
         return applicationRepository.findAll();
     }
 }

@@ -81,7 +81,7 @@ class CommonProblemControllerTest {
                 problemDesc("Test for saving the data").build();
 
         //when
-        Mockito.when(commonProblemService.saveCommonProblem(any())).thenReturn(commonProblem);
+        Mockito.when(commonProblemService.saveCommonProblem(any(),any())).thenReturn(commonProblem);
         //then
         mockMvc.perform(post("/commonProblemController/").
                 contentType(MediaType.APPLICATION_JSON)
@@ -111,7 +111,7 @@ class CommonProblemControllerTest {
                 problemDesc("Test for saving the data").build();
 
         //when
-        Mockito.when(commonProblemService.saveCommonProblem(any())).thenReturn(commonProblem);
+        Mockito.when(commonProblemService.saveCommonProblem(any(),any())).thenReturn(commonProblem);
         //then
         mockMvc.perform(put("/commonProblemController/").
                 contentType(MediaType.APPLICATION_JSON)

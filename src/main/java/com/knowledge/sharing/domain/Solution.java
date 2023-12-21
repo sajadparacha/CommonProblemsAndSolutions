@@ -22,7 +22,7 @@ public class Solution {
     @Column(name = "seqNumber")
     private int seqNumber;
     @JsonBackReference
-    @ManyToOne (cascade=CascadeType.ALL)
+    @ManyToOne (cascade=CascadeType.PERSIST)
 
     private CommonProblem commonProblem;
 
