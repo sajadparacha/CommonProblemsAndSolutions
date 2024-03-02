@@ -1,5 +1,6 @@
 package com.knowledge.sharing.services;
 
+import com.knowledge.sharing.domain.CommonProblem;
 import com.knowledge.sharing.domain.Solution;
 import com.knowledge.sharing.repositories.CommonProblemRepository;
 import com.knowledge.sharing.repositories.SolutionRepository;
@@ -12,8 +13,8 @@ import java.util.Map;
 
 @Service
 public class SolutionServiceImpl implements SolutionService{
-    private SolutionRepository solutionRepository;
-    private CommonProblemRepository commonProblemRepository;
+    private final SolutionRepository solutionRepository;
+    private final CommonProblemRepository commonProblemRepository;
 
     public SolutionServiceImpl(SolutionRepository solutionRepository,CommonProblemRepository commonProblemRepository)
     {
@@ -21,6 +22,14 @@ public class SolutionServiceImpl implements SolutionService{
         this.commonProblemRepository=commonProblemRepository;
     }
 
+    @Override
+    public void saveSolution(Solution solution,long problemId) {
+        if(commonProblemRepository.findById(problemId).isPresent()) {
+            CommonProblem commonProblem = commonProblemRepository.findById(problemId).get();
+            solution.setCommonProblem(commonProblem);
+            solutionRepository.save(solution);
+        }
+    }
     @Override
     public void saveSolution(Solution solution) {
 
@@ -39,7 +48,9 @@ public class SolutionServiceImpl implements SolutionService{
 
     @Override
     public Solution findSolution(long solutionId) {
-        return solutionRepository.findById(solutionId).get();
+        if(solutionRepository.findById(solutionId).isPresent())
+            return solutionRepository.findById(solutionId).get();
+        return null;
     }
 
 //    @Override
@@ -52,12 +63,12 @@ public class SolutionServiceImpl implements SolutionService{
 
     @Override
     public List<Map<String,Object>> findAllSolutionsForGivenProblem(long problemId) {
-        List<Map<String,Object>>  solutionList=new ArrayList<Map<String,Object>>();
+        List<Map<String,Object>>  solutionList= new ArrayList<>();
         commonProblemRepository.findById(problemId).get().
                 getSolutions().stream().forEach(
 
                         solution -> {
-                            Map<String,Object> solutionMap= new HashMap<String,Object>();
+                            Map<String,Object> solutionMap= new HashMap<>();
                             solutionMap.put("solution",solution);
                             solutionMap.put("application",solution.getCommonProblem().getApplication());
                             solutionMap.put("commonProblem",solution.getCommonProblem());

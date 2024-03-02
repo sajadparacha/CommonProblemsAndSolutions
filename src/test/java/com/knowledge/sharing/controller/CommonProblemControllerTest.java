@@ -15,7 +15,6 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.util.Assert;
 
 
 import static org.mockito.ArgumentMatchers.*;
@@ -23,11 +22,9 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.put;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -46,7 +43,7 @@ class CommonProblemControllerTest {
     @Test
     void getAllCommonProblems() throws Exception {
         //given
-        CommonProblem commonProblem=CommonProblem.builder().commonProblemId(1l).problemDesc("test").build();
+        CommonProblem commonProblem=CommonProblem.builder().commonProblemId(1L).problemDesc("test").build();
         List<CommonProblem> commonProblemList=new ArrayList<CommonProblem>();
         commonProblemList.add(commonProblem);
         //when
@@ -61,7 +58,7 @@ class CommonProblemControllerTest {
     void findCommonProblem() throws Exception {
 
         //given
-        CommonProblem commonProblem=CommonProblem.builder().commonProblemId(1l).problemDesc("for mock test").build();
+        CommonProblem commonProblem=CommonProblem.builder().commonProblemId(1L).problemDesc("for mock test").build();
         //when
         Mockito.when(commonProblemService.findCommonProblem(anyLong())).thenReturn(commonProblem);
         //then
@@ -77,11 +74,11 @@ class CommonProblemControllerTest {
     void saveCommonProblem() throws Exception {
 
         //given
-        CommonProblem commonProblem=CommonProblem.builder().commonProblemId(19l).
+        CommonProblem commonProblem=CommonProblem.builder().commonProblemId(19L).
                 problemDesc("Test for saving the data").build();
 
         //when
-        Mockito.when(commonProblemService.saveCommonProblem(any(),any())).thenReturn(commonProblem);
+        Mockito.when(commonProblemService.saveCommonProblem(any(),anyLong())).thenReturn(commonProblem);
         //then
         mockMvc.perform(post("/commonProblemController/").
                 contentType(MediaType.APPLICATION_JSON)
@@ -107,7 +104,7 @@ class CommonProblemControllerTest {
     @Test
     void updateCommonProblem() throws Exception {
         //given
-        CommonProblem commonProblem=CommonProblem.builder().commonProblemId(1l).
+        CommonProblem commonProblem=CommonProblem.builder().commonProblemId(1L).
                 problemDesc("Test for saving the data").build();
 
         //when

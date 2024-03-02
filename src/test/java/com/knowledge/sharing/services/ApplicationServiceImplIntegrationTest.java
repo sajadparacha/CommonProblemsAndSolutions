@@ -24,8 +24,8 @@ class ApplicationServiceImplIntegrationTest {
 
     @Test
     void findApplication() {
-        Optional<Application> applicationOptional=applicationRepository.findById(1l);
-        assertEquals("CSAS",applicationOptional.get().getApplDescription());
+        Optional<Application> applicationOptional=applicationRepository.findById(1L);
+        assertEquals("DIOR",applicationOptional.get().getApplDescription());
     }
 
 //    @Test
@@ -37,17 +37,17 @@ class ApplicationServiceImplIntegrationTest {
 
     @Test
     void deleteApplication() {
-        applicationRepository.deleteById(1l);
-        assertFalse(applicationRepository.findById(1l).isPresent());
+        applicationRepository.deleteById(1L);
+        assertFalse(applicationRepository.findById(1L).isPresent());
     }
 
     @Test
     void updateApplication() {
-        Application application=applicationRepository.findById(2l).get();
+        Application application=applicationRepository.findById(2L).get();
         application.setApplName("test");
 
         applicationRepository.save(application);
 
-        assertEquals("test",applicationRepository.findById(2l).get().getApplName());
+        assertEquals("test",applicationRepository.findById(2L).get().getApplName());
     }
 }

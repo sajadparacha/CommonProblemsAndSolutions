@@ -43,11 +43,13 @@ public class SolutionController {
         return solutionService.findSolution(id);
     }
 
-    @PostMapping
+    //@PostMapping
+    @PostMapping("/problem/{problemId}")
+
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public void saveSolution(@RequestBody Solution solution){
-        solutionService.saveSolution(solution);
+    public void saveSolution(@RequestBody Solution solution,@PathVariable long problemId){
+        solutionService.saveSolution(solution,problemId);
     }
 
     @DeleteMapping("/{id}")

@@ -1,13 +1,10 @@
 package com.knowledge.sharing.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.knowledge.sharing.domain.Application;
 import com.knowledge.sharing.domain.CommonProblem;
 import com.knowledge.sharing.services.CommonProblemService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,12 +26,11 @@ public class CommonProblemController {
     //throws Exception
     {
 
-        long applicationID=Long.valueOf(applicationId).longValue();
-        List<Map<String,Object>> commonProblems=commonProblemService.findAllCommonProblemsForAnApplication(applicationID);
-//        ObjectMapper objectMapper= new ObjectMapper();
+        long applicationID=Long.parseLong(applicationId);
+        //        ObjectMapper objectMapper= new ObjectMapper();
 //        System.out.println(objectMapper.writeValueAsString(commonProblems));
 
-        return commonProblems;
+        return commonProblemService.findAllCommonProblemsForAnApplication(applicationID);
 
     }
     @GetMapping("/allCommonProblems")
@@ -61,7 +57,7 @@ public class CommonProblemController {
     public Map<String,Object> findCommonProblem(@PathVariable long id){
         CommonProblem commonProblem= commonProblemService.findCommonProblem(id);
         Application application=commonProblem.getApplication();
-        Map<String,Object> commponProblemMap=new HashMap<String,Object>();
+        Map<String,Object> commponProblemMap= new HashMap<>();
         commponProblemMap.put("application",application);
         commponProblemMap.put("commonProblem",commonProblem);
 
